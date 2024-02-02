@@ -1,0 +1,42 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+{% block title %} registration {% endblock %}
+
+{% block content %}
+<div class="container-fluid display-6"> 
+    <div class="row align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <p class="h1 fw-weight-bold">Создайте аккаунт</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <form action="." method="get">
+                    {{ user_form.as_p }}
+                    {% csrf_token %}
+                    <input type="submit" value="Создать аккаунт" class="btn btn-primary" style="height: 40px; width: 280px;">
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-1">
+                <div class="linkToSignin">
+                    <a href="{% url 'signin' %}">Или войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+
+{% endblock %}
+
+
+    
+
+    
