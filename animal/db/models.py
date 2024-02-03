@@ -18,7 +18,7 @@ class Apartment(models.Model):
 class Family(models.Model):
     surname = models.TextField('Фамилия')
     checkDate = models.DateField('дата проверки')
-    phoneNumber - models.CharField('номер телефона', max_length=20)
+    phoneNumber = models.CharField('номер телефона', max_length=20)
 
     def __str__(self):
         return f'Семья: {self.title}'
@@ -43,7 +43,7 @@ class ApartmentOwner(models.Model):
     ownerFatherName = models.TextField('Отчество владельца')
 
     ownerBorn = models.DateField('Дата рождения владельца')
-    phoneNumber - models.CharField('номер телефона', max_length=20)
+    phoneNumber = models.CharField('номер телефона', max_length=20)
 
     def __str__(self):
         return f'Владелец квартиры: {self.title}'
@@ -53,5 +53,12 @@ class ApartmentOwner(models.Model):
 
 class Entrance(models.Model):
     entranceNumber = models.IntegerField('номер подъезда')
+    apartmentNumber = models.IntegerField('номер квартиры')
+    floorNumber = models.IntegerField('номер этажа')
+    intercomAvailability = models.BooleanField('наличие домофона')
 
-# TODO дописать модель подъезда
+    def __str__(self):
+        return f'Подъезд: {self.title}'
+    class Meta:
+        verbose_name = 'Подъезд'
+        verbose_name_plural = 'Подъезды'
