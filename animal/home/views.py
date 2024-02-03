@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .forms import UserRegistrationForm
 
@@ -6,20 +6,14 @@ from .forms import UserRegistrationForm
 def home(request):
     return render(request, 'home/home.html')
 def registration(request):
-    if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            # Create a new user object but avoid saving it yet
-            new_user = user_form.save(commit=False)
-            # Set the chosen password
-            new_user.set_password(user_form.cleaned_data['password'])
-            # Save the User object
-            new_user.save()
-            return render(request, 'home/signin.html', {'new_user': new_user})
-            
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST);
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username');
+            return redirect('home')
     else:
-        user_form = UserRegistrationForm()
-    return render(request, 'home/registration.html', {'user_form': user_form})
+        form = UserRegistrationForm()
+    return render(request, 'home/registration.html', {'form': form})
 def signin(request):
-    
     return render(request, 'home/signin.html')

@@ -26,13 +26,15 @@ SECRET_KEY = 'django-insecure-%h2-5loifff*8b10&tm6f93mdfzafl^=%q92!99zybsu&8@427
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_REDIRECT_URL =  '/'
 
 # Application definition
 
 INSTALLED_APPS = [
     'home',
     'db',
+    'accounts',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,6 +82,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'USER': 'root',
+        'PASSWORD': '2004',
+        'HOST': 'localhost',   
+        'PORT': '3306',
     }
 }
 

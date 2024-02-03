@@ -1,5 +1,6 @@
 {% extends 'home/layout.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %} signin {% endblock %}
 {% block header %}
 
@@ -10,7 +11,8 @@
         <div class="row justify-content-center">
             <div class="col-2">
                 <form action="{% url 'db' %}" class="form">
-                    <div class="row">
+                    {{ form }}
+                    <!-- <div class="row">
                         <div class="col">
                             <h3 class="h1 fw-weight-bold">Войдите в аккаунт</h3>
                         </div>
@@ -49,12 +51,12 @@
                             />
                         </div>
                     </div>
-                    <br>
+                    <br> -->
                     <div class="row justify-content-center">
                         <div class="col">
                             <input type="submit" value="Войти" class="btn btn-primary" style="height: 40px; width: 280px;"/>                
                         </div>
-                    </div>
+                    </div> 
                 </form>
             </div>
         </div>
@@ -63,7 +65,7 @@
         <div class="row justify-content-center">
             <div class="col-2">
                 <div class="linkToRegistration">
-                    <a href="{% url 'registration' %}">Или зарегистрироваться</a>
+                    <a href="{% url 'reg' %}">Или зарегистрироваться</a>
                 </div>
             </div>
         </div>
