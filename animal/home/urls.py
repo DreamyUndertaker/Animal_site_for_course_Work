@@ -9,7 +9,8 @@ urlpatterns = [
     path('login/', authViews.LoginView.as_view(template_name='home/signin.html'), name="login"),
     path('registration/', views.registration, name='registration'),
     path('email/', include(email_urls)),
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path('db/', include('db.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

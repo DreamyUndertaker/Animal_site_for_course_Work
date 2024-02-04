@@ -1,0 +1,49 @@
+{% extends 'db/layout_db.html' %}
+{% load static %}
+{% block title %} список записей {% endblock %}
+{% block header %}
+<!-- TODO сделать вывод списка сущностей -->
+{% endblock %}
+{% block content %}
+<div class="contentDB display-6">
+    <form action="results" method="post" content='text/html; charset=UTF-8' accept-charset="UTF-8" class="requestForm">
+        {% csrf_token %} 
+        <div class="ArticleForm">
+            <h5>Квартира</h5>
+            {{ apartmentForm.entranceNumber }} 
+            {{ apartmentForm.apartmentOwner }} 
+            {{ apartmentForm.familyId }} 
+            {{ apartmentForm.apartmentNumber }} 
+            {{ apartmentForm.roomNumber }} 
+            {{ apartmentForm.apartmentArea }} 
+        </div>
+        <div class="PersonForm">
+            <h5>Семья</h5>
+            {{ familyForm.surname }} 
+            {{ familyForm.checkDate }}
+            {{ familyForm.phoneNumber }}
+        </div>
+        <div class="DepositesForm">
+            <h5>Питомцы</h5>
+            {{ petsForm.familyId }}
+            {{ petsForm.petKind }}
+            {{ petsForm.petNickname }}
+        </div>
+        <div class="ClientsForm">
+            <h5>Владелец квртиры</h5>
+            {{ apartmentOwnerForm.ownerName }}
+            {{ apartmentOwnerForm.ownerSurName }}
+            {{ apartmentOwnerForm.ownerFatherName }}
+        </div>
+        <div class="ExchangeRatesForm">
+            <h5>Подъезд</h5>
+            {{ entranceForm.entranceNumber }}
+            {{ entranceForm.apartmentNumber }}
+            {{ entranceForm.floorNumber }}
+            {{ entranceForm.intercomAvailability }}
+        </div>
+        <span>{{ error }}</span>
+        <button type="submit" class="">Добавить</button>
+    </form>
+</div>
+{% endblock %}

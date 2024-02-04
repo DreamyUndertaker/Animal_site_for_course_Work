@@ -1,39 +1,38 @@
 # TODO реализовать формы для всех полей сущностей 
 
-from django.forms import BooleanField, CharField, DateField, IntegerField, ModelForm
+from django.forms import BooleanField, CheckboxInput, TextInput, DateInput, NumberInput, ModelForm
 
-from animal.db.models import Apartment, ApartmentOwner, Entrance, Family, Pets
+from .models import Apartment, ApartmentOwner, Entrance, Family, Pets
 
 
 class ApartmentForm(ModelForm):
     class Meta:
         model = Apartment
-        fields = {
+        fields = [
             'entranceNumber', 
             'apartmentOwner',
             'familyId',
             'apartmentNumber',
             'roomNumber',
             'apartmentArea'
-        }
-        
+        ]
         widgets = {
-            'entranceNumber': IntegerField(attrs={
+            'entranceNumber': NumberInput(attrs={
                 'placeholder':'номер подъезда'
             }),
-            'apartmentOwner': IntegerField(attrs={
+            'apartmentOwner': NumberInput(attrs={
                 'placeholder':'номер владельца'
             }),
-            'familyId': IntegerField(attrs={
+            'familyId': NumberInput(attrs={
                 'placeholder':'номер семьи'
             }),
-            'apartmentNumber': IntegerField(attrs={
+            'apartmentNumber': NumberInput(attrs={
                 'placeholder':'номер квартиры'
             }),
-            'roomNumber': IntegerField(attrs={
+            'roomNumber': NumberInput(attrs={
                 'placeholder':'номер комнаты'
             }),
-            'apartmentArea': IntegerField(attrs={
+            'apartmentArea': NumberInput(attrs={
                 'placeholder':'площадь комнаты'
             }),
         }
@@ -41,19 +40,19 @@ class ApartmentForm(ModelForm):
 class FamilyForm(ModelForm):
     class Meta:
         model = Family
-        fields = {
+        fields = [
             'surname', 
             'checkDate',
             'phoneNumber',
-        }
+        ]
         widgets = {
-            'surname': CharField (attrs={
+            'surname': TextInput(attrs={
                 'placeholder':'фамилия семьи'
             }),
-            'checkDate': DateField (attrs={
+            'checkDate': DateInput(attrs={
                 'placeholder':'дата проверки'
             }),
-            'phoneNumber': DateField (attrs={
+            'phoneNumber': DateInput(attrs={
                 'placeholder':'номер телефона'
             }),
         }
@@ -61,19 +60,19 @@ class FamilyForm(ModelForm):
 class PetsForm(ModelForm):
     class Meta:
         model = Pets
-        fields = {
+        fields = [
             'familyId', 
             'petKind',
             'petNickname',
-        }
+        ]
         widgets = {
-            'familyId': IntegerField (attrs={
+            'familyId': NumberInput(attrs={
                 'placeholder':'номер семьи'
             }),
-            'petKind': CharField (attrs={
+            'petKind': TextInput(attrs={
                 'placeholder':'вид питомца'
             }),
-            'petNickname': CharField (attrs={
+            'petNickname': TextInput(attrs={
                 'placeholder':'кличка питомца'
             }),
         }
@@ -81,19 +80,19 @@ class PetsForm(ModelForm):
 class ApartmentOwnerForm(ModelForm):
     class Meta:
         model = ApartmentOwner
-        fields = {
+        fields = [
             'ownerName', 
             'ownerSurName',
             'ownerFatherName',
-        }
+        ]
         widgets = {
-            'ownerName': CharField (attrs={
+            'ownerName': TextInput(attrs={
                 'placeholder':'имя'
             }),
-            'ownerSurName': CharField (attrs={
+            'ownerSurName': TextInput(attrs={
                 'placeholder':'фамилия'
             }),
-            'ownerFatherName': CharField (attrs={
+            'ownerFatherName': TextInput(attrs={
                 'placeholder':'отчество'
             }),
         }
@@ -101,24 +100,24 @@ class ApartmentOwnerForm(ModelForm):
 class EntranceForm(ModelForm):
     class Meta:
         model = Entrance
-        fields = {
+        fields = [
             'entranceNumber', 
             'apartmentNumber',
             'floorNumber',
             'intercomAvailability',
-        }
+        ]
         widgets = {
-            'entranceNumber': IntegerField (attrs={
+            'entranceNumber': NumberInput(attrs={
                 'placeholder':'номер подъезда'
             }),
-            'apartmentNumber': IntegerField (attrs={
+            'apartmentNumber': NumberInput(attrs={
                 'placeholder':'номер квартиры'
             }),
-            'floorNumber': IntegerField (attrs={
+            'floorNumber': NumberInput(attrs={
                 'placeholder':'номер этажа'
             }),
-            'intercomAvailability': BooleanField (attrs={
+            'intercomAvailability': CheckboxInput (attrs={
                 'placeholder':'домофон',
                 
-            }, required=True),
+            }),
         }

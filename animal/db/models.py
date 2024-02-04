@@ -45,11 +45,11 @@ class ApartmentOwner(models.Model):
     ownerBorn = models.DateField('Дата рождения владельца')
     phoneNumber = models.CharField('номер телефона', max_length=20)
 
-    def __str__(self):
-        return f'Владелец квартиры: {self.title}'
-    class Meta:
-        verbose_name = 'Владелец квртиры'
-        verbose_name_plural = 'Владельцы квартиры'
+    # def __str__(self):
+    #     # return f'Владелец квартиры: {self.title}'
+    # # class Meta:
+    # #     verbose_name = 'Владелец квртиры'
+    # #     verbose_name_plural = 'Владельцы квартиры'
 
 class Entrance(models.Model):
     entranceNumber = models.IntegerField('номер подъезда')
