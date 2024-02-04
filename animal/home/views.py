@@ -1,19 +1,25 @@
 from django.shortcuts import redirect, render
-
-from .forms import UserRegistrationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from .forms import SignUpForm
+from django_email_verification import send_email
 
 # Create your views here.
-def home(request):
-    return render(request, 'home/home.html')
+
 def registration(request):
     if request.method == "POST":
-        form = UserRegistrationForm(request.POST);
+        form = SignUpForm(request.POST);
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username');
-            return redirect('home')
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/')
     else:
-        form = UserRegistrationForm()
+        form = SignUpForm()
     return render(request, 'home/registration.html', {'form': form})
-def signin(request):
-    return render(request, 'home/signin.html')
+def home(request):
+    return render(request, 'home/home.html')

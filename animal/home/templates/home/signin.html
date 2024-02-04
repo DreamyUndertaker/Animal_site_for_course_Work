@@ -6,57 +6,14 @@
 
 {% endblock %}
 {% block content %}
-<div class="container-fluid display-6">
+<div class="container-fluid display-6" >
     <div class="row align-items-center">
         <div class="row justify-content-center">
             <div class="col-2">
-                <form action="{% url 'db' %}" class="form">
-                    {{ form }}
-                    <!-- <div class="row">
-                        <div class="col">
-                            <h3 class="h1 fw-weight-bold">Войдите в аккаунт</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p class="h1 fw-weight-bold">Имя пользователя:</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col-4">
-                            <input 
-                                type="text" 
-                                name="email" 
-                                id="email" 
-                                class="email"
-                                placeholder="email" 
-                            />
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-2">
-                            <p class="h1 fw-weight-bold">Пароль:</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                class="password"
-                                placeholder="password"
-                            />
-                        </div>
-                    </div>
-                    <br> -->
-                    <div class="row justify-content-center">
-                        <div class="col">
-                            <input type="submit" value="Войти" class="btn btn-primary" style="height: 40px; width: 280px;"/>                
-                        </div>
-                    </div> 
+                <form method="POST">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="submit" value="Войти" class="btn btn-primary " style="height: 40px; width: 280px;"/>                
                 </form>
             </div>
         </div>
@@ -65,12 +22,14 @@
         <div class="row justify-content-center">
             <div class="col-2">
                 <div class="linkToRegistration">
-                    <a href="{% url 'reg' %}">Или зарегистрироваться</a>
+                    <a href="{% url 'registration' %}">Или зарегистрироваться</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 {% endblock %}
 {% block footer %}
 
