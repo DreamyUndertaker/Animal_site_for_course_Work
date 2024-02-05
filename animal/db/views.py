@@ -1,22 +1,23 @@
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect
-
 from .forms import ApartmentForm, ApartmentOwnerForm, EntranceForm, FamilyForm, PetsForm
-
 from .models import Apartment, ApartmentOwner, Entrance, Family, Pets
 
-
-# Create your views here.
+# получение данных из бд
 def db_home(request):
-    db = Apartment.objects.all()
-    db1 = Family.objects.all()
-    db2 = Pets.objects.all()
-    db3 = ApartmentOwner.objects.all()
-    db4 = Entrance.objects.all()
-    return render(request, 'db/db.html', {'Apartment' : db, 'Family': db1, 'Pets' : db2, 'ApartmentOwner': db3, 'Entrance': db4})
+    apartment = Apartment.objects.all()
+    family = Family.objects.all()
+    pets = Pets.objects.all()
+    apartmentOwner = ApartmentOwner.objects.all()
+    entrance = Entrance.objects.all()
+    return render(request, 'db/db.html', {'Apartment' : apartment, 
+                                            'Family': family, 
+                                            'Pets' : pets, 
+                                            'ApartmentOwner': apartmentOwner, 
+                                            'Entrance': entrance})
 
+# со[ранение данных в бд
 def create(request):
     error = ''
     if request.method == 'POST':
@@ -26,25 +27,37 @@ def create(request):
         apartmentOwnerForm = ApartmentOwnerForm(request.POST)
         entranceForm = EntranceForm(request.POST)
         if apartmentOwnerForm.is_valid():
+            
+            apartmentForm.entranceNumber = request.POST.get('entranceNumber')
+            apartmentForm.apartmentOwner = request.POST.get('apartmentOwner')
+            apartmentForm.familyId = request.POST.get('familyId')
+            apartmentForm.apartmentNumber = request.POST.get('apartmentNumber')
+            apartmentForm.roomNumber = request.POST.get('roomNumber')
+            apartmentForm.apartmentArea = request.POST.get('apartmentArea')
             apartmentForm.save()
+
+            
             familyForm.save()
             petsForm.save()
             entranceForm.save()
             apartmentOwnerForm.save()
-            return redirect('results')
+            return HttpResponseRedirect('')
         else:
             error = "форма была не верной"
-    apartmentForm = ApartmentForm()
-    familyForm = FamilyForm()
-    petsForm = PetsForm()
-    apartmentOwnerForm = ApartmentOwnerForm()
-    entranceForm = EntranceForm()
-    data = {
-        'apartmentForm': apartmentForm,
-        'familyForm': familyForm,
-        'petsForm': petsForm,
-        'apartmentOwnerForm': apartmentOwnerForm,
-        'entranceForm': entranceForm,
-        'error': error 
-    }
-    return render(request, 'db/create.html', data)
+
+def edit(request, id):
+    try:
+
+        if request.method == "POST":
+            apartmentForm = ApartmentForm(request.POST)
+            familyForm = FamilyForm(request.POST)
+            petsForm = PetsForm(request.POST)
+            apartmentOwnerForm = ApartmentOwnerForm(request.POST)
+            entranceForm = EntranceForm(request.POST)
+            return render(request, 'db/db.html', {'Apartment' : apartment, 
+                                            'Family': family, 
+                                            'Pets' : pets, 
+                                            'ApartmentOwner': apartmentOwner, 
+                                            'Entrance': entrance})
+    except :
+        return HttpResponseNotFound("<h2>DB not found</h2>")
