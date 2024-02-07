@@ -10,7 +10,6 @@ class SignUpForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
         # help_text='Одна большая буква и т.д.',
     )
-
     class Meta:
         model = User
         fields = ('username', 'password1' )

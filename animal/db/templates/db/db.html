@@ -8,31 +8,19 @@
 </div>
 {% endblock %}
 {% block content %}
-<div class="content display-6">
-    {% if db2.count > 0 %}
-        {% for object in db2 %}
-            <div class="article">
-                <h3>
-                    {{ object.ownerName }}
-                </h3>
-                <h5>
-                    {{ object.ownerSurName }}
-                </h5>
-            </div>
-            <div class="persons">
-                <h3>
-                    {{ object.ownerName }}
-                </h3>
-                <h3>
-                    {{ object.ownerSurName }}
-                </h3>
-                <h3>
-                    {{ object.ownerFatherName }}
-                </h3>
+<div class="content display-">
+    <h1>Пользователи</h1>
+    {% if ApartmentOwner.count > 0 %}
+        {% for object in ApartmentOwner %}
+            <div class="alert alert-warning">
+                <h5>Имя владельца квртиры: {{ object.ownerName  }}</h5>
+                <h5>Фамилия владельца квртиры: {{ object.ownerSurName }}</h5>
+                <a href="{% url 'person-detail' object.id %}" class="btn btn-warning">Детальнее</a>
             </div>
         {% endfor %}
     {% else %}
         <p>У вас нет записей</p>
     {% endif %}
+    
 </div>
 {% endblock %}

@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
 <div class="contentDB display-6">
-    <form action="results" method="post" content='text/html; charset=UTF-8' accept-charset="UTF-8" class="requestForm">
+    <form method="POST" >
         {% csrf_token %} 
         <div class="ArticleForm">
             <h5>Квартира</h5>
@@ -34,6 +34,8 @@
             {{ apartmentOwnerForm.ownerName }}
             {{ apartmentOwnerForm.ownerSurName }}
             {{ apartmentOwnerForm.ownerFatherName }}
+            {{ apartmentOwnerForm.ownerBorn }}
+            {{ apartmentOwnerForm.phoneNumber }}
         </div>
         <div class="ExchangeRatesForm">
             <h5>Подъезд</h5>

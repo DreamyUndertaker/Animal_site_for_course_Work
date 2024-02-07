@@ -1,6 +1,6 @@
 # TODO реализовать формы для всех полей сущностей 
 
-from django.forms import BooleanField, CheckboxInput, TextInput, DateInput, NumberInput, ModelForm
+from django.forms import CheckboxInput, DateInput, TextInput, DateTimeInput, NumberInput, ModelForm
 
 from .models import Apartment, ApartmentOwner, Entrance, Family, Pets
 
@@ -17,22 +17,22 @@ class ApartmentForm(ModelForm):
             'apartmentArea'
         ]
         widgets = {
-            'entranceNumber': NumberInput(attrs={
+            "entranceNumber": NumberInput(attrs={
                 'placeholder':'номер подъезда'
             }),
-            'apartmentOwner': NumberInput(attrs={
+            "apartmentOwner": NumberInput(attrs={
                 'placeholder':'номер владельца'
             }),
-            'familyId': NumberInput(attrs={
+            "familyId": NumberInput(attrs={
                 'placeholder':'номер семьи'
             }),
-            'apartmentNumber': NumberInput(attrs={
+            "apartmentNumber": NumberInput(attrs={
                 'placeholder':'номер квартиры'
             }),
-            'roomNumber': NumberInput(attrs={
+            "roomNumber": NumberInput(attrs={
                 'placeholder':'номер комнаты'
             }),
-            'apartmentArea': NumberInput(attrs={
+            "apartmentArea": NumberInput(attrs={
                 'placeholder':'площадь комнаты'
             }),
         }
@@ -46,14 +46,14 @@ class FamilyForm(ModelForm):
             'phoneNumber',
         ]
         widgets = {
-            'surname': TextInput(attrs={
+            "surname": TextInput(attrs={
                 'placeholder':'фамилия семьи'
             }),
-            'checkDate': DateInput(attrs={
-                'placeholder':'дата проверки'
+            "checkDate": DateInput(attrs={
+                
             }),
-            'phoneNumber': DateInput(attrs={
-                'placeholder':'номер телефона'
+            "phoneNumber": NumberInput(attrs={
+                
             }),
         }
 
@@ -66,13 +66,13 @@ class PetsForm(ModelForm):
             'petNickname',
         ]
         widgets = {
-            'familyId': NumberInput(attrs={
+            "familyId": NumberInput(attrs={
                 'placeholder':'номер семьи'
             }),
-            'petKind': TextInput(attrs={
+            "petKind": TextInput(attrs={
                 'placeholder':'вид питомца'
             }),
-            'petNickname': TextInput(attrs={
+            "petNickname": TextInput(attrs={
                 'placeholder':'кличка питомца'
             }),
         }
@@ -84,17 +84,26 @@ class ApartmentOwnerForm(ModelForm):
             'ownerName', 
             'ownerSurName',
             'ownerFatherName',
+            'ownerBorn',
+            'phoneNumber',
         ]
         widgets = {
-            'ownerName': TextInput(attrs={
+            "ownerName": TextInput(attrs={
                 'placeholder':'имя'
             }),
-            'ownerSurName': TextInput(attrs={
+            "ownerSurName": TextInput(attrs={
                 'placeholder':'фамилия'
             }),
-            'ownerFatherName': TextInput(attrs={
+            "ownerFatherName": TextInput(attrs={
                 'placeholder':'отчество'
             }),
+            "ownerBorn": TextInput(attrs={
+                
+            }),
+            "phoneNumber": TextInput(attrs={
+                'placeholder':'phoneNumber'
+            }),
+
         }
 
 class EntranceForm(ModelForm):
@@ -107,16 +116,16 @@ class EntranceForm(ModelForm):
             'intercomAvailability',
         ]
         widgets = {
-            'entranceNumber': NumberInput(attrs={
+            "entranceNumber": NumberInput(attrs={
                 'placeholder':'номер подъезда'
             }),
-            'apartmentNumber': NumberInput(attrs={
+            "apartmentNumber": NumberInput(attrs={
                 'placeholder':'номер квартиры'
             }),
-            'floorNumber': NumberInput(attrs={
+            "floorNumber": NumberInput(attrs={
                 'placeholder':'номер этажа'
             }),
-            'intercomAvailability': CheckboxInput (attrs={
+            "intercomAvailability": CheckboxInput (attrs={
                 'placeholder':'домофон',
                 
             }),

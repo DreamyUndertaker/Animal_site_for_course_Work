@@ -1,0 +1,34 @@
+{% extends 'db/layout_db.html' %}
+{% load static %}
+{% block title %} {{ apartmentOwner.ownerName  }} {% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+<div class="content">
+    
+    <h5>Имя владельца квртиры: {{ apartmentOwner.ownerName  }}</h5>
+    <h5>Фамилия владельца квртиры: {{ apartmentOwner.ownerSurName }}</h5>
+    <h5>Отчество владельца квртиры: {{ apartmentOwner.ownerFatherName }}</h5>
+    <h5>Дата рождения владельца квртиры: {{ apartmentOwner.ownerBorn }}</h5>
+    <h5>Номер телефона владельца квртиры: {{ apartmentOwner.phoneNumber }}</h5>
+    <br>
+    <h5>Номер подъезда: {{ entrance.entranceNumber }}</h5>
+    <h5>Номер квртиры: {{ entrance.apartmentNumber }}</h5>
+    <h5>Номер этажа: {{ entrance.floorNumber }}</h5>
+    <h5>Наличие домофона: {{ entrance.intercomAvailability }}</h5>
+    <br>
+    <h5>Вид питомца: {{ pets.petKind }}</h5>
+    <h5>Кличка питомца: {{ pets.petNickname }}</h5>
+    <br>
+    <h5>Фамилия семьи квртиры: {{ family.surname  }}</h5>
+    <h5>Дата проверки: {{ family.checkDate }}</h5>
+    <h5>Номер телефона: {{ family.phoneNumber }}</h5>
+    <br>
+    <h5>Номер подъезда: {{ apartment.entranceNumber }}</h5>
+    <h5>Номер квартиры: {{ apartment.apartmentNumber }}</h5>
+    <h5>Номер комнаты: {{ apartment.roomNumber }}</h5>
+    <h5>Площадь комнаты: {{ apartment.apartmentArea }}</h5>
+    <br>
+    <a href="{% url 'person-update' object.id %}" class="btn btn-warning">Редактировть</a>
+</div>
+{% endblock %}
