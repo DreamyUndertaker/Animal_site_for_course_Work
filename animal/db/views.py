@@ -20,13 +20,11 @@ class PersonDetailView(DetailView):
     model = ApartmentOwner 
     
     def get_context_data(self,*args, **kwargs):
-        print(self.__dir__)    
         context = super(PersonDetailView, self).get_context_data(*args,**kwargs)
-        
-        context['entrance'] = Entrance.objects.get(self.request)
-        context['apartment'] = Apartment.objects.get(self.request)
-        context['family'] = Family.objects.get(self.request)
-        context['pets'] = Pets.objects.get(self.request)
+        context['entrance'] = Entrance.objects.get(id= self.kwargs['pk'])
+        context['apartment'] = Apartment.objects.get(id= self.kwargs['pk'])
+        context['family'] = Family.objects.get(id= self.kwargs['pk'])
+        context['pets'] = Pets.objects.get(id= self.kwargs['pk'])
         return context
         
     template_name = 'db/details_view.html'
@@ -38,10 +36,16 @@ class PersonDetailView(DetailView):
 
 class PersonUpdateView(UpdateView):
     model = ApartmentOwner
-
+    def get_context_data(self,*args, **kwargs):
+        context = super(PersonUpdateView, self).get_context_data(*args,**kwargs)
+        context['entranceForm'] = Entrance.objects.get(id= self.kwargs['pk'])
+        context['apartmentForm'] = Apartment.objects.get(id= self.kwargs['pk'])
+        context['familyForm'] = Family.objects.get(id= self.kwargs['pk'])
+        context['petsForm'] = Pets.objects.get(id= self.kwargs['pk'])
+        
+        return context
     template_name = 'db/create.html'
-    context_object_name = 'apartmentOwner'
-
+    context_object_name = 'apartmentOwnerForm'
     form_class = ApartmentOwnerForm
 
 
