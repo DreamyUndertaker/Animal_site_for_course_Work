@@ -4,31 +4,112 @@
 {% block header %}
 {% endblock %}
 {% block content %}
-<div class="content">
+<div class="container-md fs-2">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <p>Имя владельца квртиры: <span class="fw-bolder">{{ apartmentOwner.ownerName  }}</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Фамилия владельца квртиры: <span class="fw-bolder">{{ apartmentOwner.ownerSurName }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Отчество владельца квртиры: <span class="fw-bolder">{{ apartmentOwner.ownerFatherName }}</span> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-text">
+                    <div class="row">
+                        <div class="col">
+                            <p>Дата рождения владельца квртиры: <span class="fw-bolder">{{ apartmentOwner.ownerBorn }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер телефона владельца квртиры: <span class="fw-bolder">{{ apartmentOwner.phoneNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер подъезда: <span class="fw-bolder">{{ entrance.entranceNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер квртиры: <span class="fw-bolder">{{ entrance.apartmentNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер этажа: <span class="fw-bolder">{{ entrance.floorNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Наличие домофона: <span class="fw-bolder">{{ entrance.intercomAvailability }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Вид питомца: <span class="fw-bolder">{{ pets.petKind }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Кличка питомца: <span class="fw-bolder">{{ pets.petNickname }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Фамилия семьи квртиры: <span class="fw-bolder">{{ family.surname }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Дата проверки: <span class="fw-bolder">{{ family.checkDate }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер телефона: <span class="fw-bolder">{{ family.phoneNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер подъезда: <span class="fw-bolder">{{ apartment.entranceNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер квартиры: <span class="fw-bolder">{{ apartment.apartmentNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Номер комнаты: <span class="fw-bolder">{{ apartment.roomNumber }}</span> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Площадь комнаты: <span class="fw-bolder">{{ apartment.apartmentArea }}</span> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <a href="{% url 'person-update' object.id %}" class="btn btn-warning btn-lg">Редактировть</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <h5>Имя владельца квртиры: {{ apartmentOwner.ownerName  }}</h5>
-    <h5>Фамилия владельца квртиры: {{ apartmentOwner.ownerSurName }}</h5>
-    <h5>Отчество владельца квртиры: {{ apartmentOwner.ownerFatherName }}</h5>
-    <h5>Дата рождения владельца квртиры: {{ apartmentOwner.ownerBorn }}</h5>
-    <h5>Номер телефона владельца квртиры: {{ apartmentOwner.phoneNumber }}</h5>
-    <br>
-    <h5>Номер подъезда: {{ entrance.entranceNumber }}</h5>
-    <h5>Номер квртиры: {{ entrance.apartmentNumber }}</h5>
-    <h5>Номер этажа: {{ entrance.floorNumber }}</h5>
-    <h5>Наличие домофона: {{ entrance.intercomAvailability }}</h5>
-    <br>
-    <h5>Вид питомца: {{ pets.petKind }}</h5>
-    <h5>Кличка питомца: {{ pets.petNickname }}</h5>
-    <br>
-    <h5>Фамилия семьи квртиры: {{ family.surname  }}</h5>
-    <h5>Дата проверки: {{ family.checkDate }}</h5>
-    <h5>Номер телефона: {{ family.phoneNumber }}</h5>
-    <br>
-    <h5>Номер подъезда: {{ apartment.entranceNumber }}</h5>
-    <h5>Номер квартиры: {{ apartment.apartmentNumber }}</h5>
-    <h5>Номер комнаты: {{ apartment.roomNumber }}</h5>
-    <h5>Площадь комнаты: {{ apartment.apartmentArea }}</h5>
-    <br>
-    <a href="{% url 'person-update' object.id %}" class="btn btn-warning">Редактировть</a>
 </div>
 {% endblock %}

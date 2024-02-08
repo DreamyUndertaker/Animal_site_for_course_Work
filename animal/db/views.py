@@ -38,15 +38,23 @@ class PersonUpdateView(UpdateView):
     model = ApartmentOwner
     def get_context_data(self,*args, **kwargs):
         context = super(PersonUpdateView, self).get_context_data(*args,**kwargs)
-        context['entranceForm'] = Entrance.objects.get(id= self.kwargs['pk'])
-        context['apartmentForm'] = Apartment.objects.get(id= self.kwargs['pk'])
-        context['familyForm'] = Family.objects.get(id= self.kwargs['pk'])
-        context['petsForm'] = Pets.objects.get(id= self.kwargs['pk'])
+        context['entranceForm'] = EntranceForm
+        context['apartmentForm'] = ApartmentForm
+        context['familyForm'] = FamilyForm
+        context['petsForm'] = PetsForm
+        context['apartmentOwnerForm'] = ApartmentOwnerForm
         
         return context
+    fields = [
+            'ownerName', 
+            'ownerSurName',
+            'ownerFatherName',
+            'ownerBorn',
+            'phoneNumber',
+        ]
     template_name = 'db/create.html'
     context_object_name = 'apartmentOwnerForm'
-    form_class = ApartmentOwnerForm
+    
 
 
 # сохранение данных в бд

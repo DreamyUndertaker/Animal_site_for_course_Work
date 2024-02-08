@@ -1,6 +1,6 @@
 # TODO реализовать формы для всех полей сущностей 
 
-from django.forms import CheckboxInput, DateInput, TextInput, DateTimeInput, NumberInput, ModelForm
+from django.forms import CheckboxInput, DateInput, TextInput, NumberInput, ModelForm
 
 from .models import Apartment, ApartmentOwner, Entrance, Family, Pets
 
@@ -50,10 +50,10 @@ class FamilyForm(ModelForm):
                 'placeholder':'фамилия семьи'
             }),
             "checkDate": DateInput(attrs={
-                
+                'placeholder':'Дата проверки'
             }),
             "phoneNumber": NumberInput(attrs={
-                
+                'placeholder':'Номер телефона'
             }),
         }
 
@@ -98,7 +98,7 @@ class ApartmentOwnerForm(ModelForm):
                 'placeholder':'отчество'
             }),
             "ownerBorn": TextInput(attrs={
-                
+                'placeholder':'Дата рождения'
             }),
             "phoneNumber": TextInput(attrs={
                 'placeholder':'phoneNumber'

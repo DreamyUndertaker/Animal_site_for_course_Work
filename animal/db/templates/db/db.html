@@ -2,25 +2,55 @@
 {% load static %}
 {% block title %} список записей {% endblock %}
 {% block header %}
-<!-- TODO сделать вывод списка сущностей -->
-<div class="headerNavSignin-link">
-    <a href="{% url 'create' %}">Добавить запись</a>
-</div>
+
 {% endblock %}
 {% block content %}
-<div class="content display-">
-    <h1>Жильцы</h1>
-    {% if ApartmentOwner.count > 0 %}
-        {% for object in ApartmentOwner %}
-            <div class="alert alert-warning">
-                <h5>Имя владельца квртиры: {{ object.ownerName  }}</h5>
-                <h5>Фамилия владельца квртиры: {{ object.ownerSurName }}</h5>
-                <a href="{% url 'person-detail' object.id %}" class="btn btn-warning">Детальнее</a>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>У вас нет записей</p>
-    {% endif %}
-    
+<div class="container-md fs-2">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-8">
+            <h1>Жильцы</h1>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-center">
+        <div class="col-8" >
+            {% if ApartmentOwner.count > 0 %}
+            {% for object in ApartmentOwner %}
+                <div class="col" style="padding-bottom: 25px;">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title h2">Житель: {{ object.id }}</h5>
+                            </div>
+                            <p class="card-text">
+                                <div class="row">
+                                    <p>Имя владельца квртиры: <span class="fw-bolder">{{ object.ownerName }}</span></p>
+                                </div>
+                                <div class="row">
+                                    <p>Фамилия владельца квртиры: <span class="fw-bolder">{{ object.ownerSurName }}</span></p>
+                                </div>
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-5">
+                                        <a href="{% url 'person-detail' object.id %}" class="btn btn-primary btn-lg" style="width: 200px;">Детальнее</a>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+                <p>У вас нет записей</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+<div class="container-md">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <a href="{% url 'create' %}" class="btn btn-primary btn-lg">Добавить запись</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

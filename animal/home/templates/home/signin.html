@@ -9,20 +9,20 @@
 <div class="container-fluid display-6" >
     <div class="row align-items-center">
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <form method="POST">
                     {{ form.as_p }}
                     {% csrf_token %}
-                    <input type="submit" value="Войти" class="btn btn-primary " style="height: 40px; width: 280px;"/>                
+                    <input type="submit" value="Войти" class="btn btn-primary btn-lg"/>                
                 </form>
             </div>
         </div>
         
         <br> <br>
         <div class="row justify-content-center">
-            <div class="col-2">
-                <div class="linkToRegistration">
-                    <a href="{% url 'registration' %}">Или зарегистрироваться</a>
+            <div class="col-3">
+                <div class="">
+                    <a href="{% url 'registration' %}" class="btn btn-primary btn-lg">Или зарегистрироваться</a>
                 </div>
             </div>
         </div>
