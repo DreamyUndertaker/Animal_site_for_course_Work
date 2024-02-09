@@ -13,24 +13,29 @@
     </div>
     <div class="row align-items-center justify-content-center">
         <div class="col-8" >
-            {% if ApartmentOwner.count > 0 %}
-            {% for object in ApartmentOwner %}
+            {% if apartmentOwner.count > 0 %}
+            {% for object1, object2 in myZip %}
                 <div class="col" style="padding-bottom: 25px;">
                     <div class="col">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title h2">Житель: {{ object.id }}</h5>
+                                <h5 class="card-title h2">Житель: {{ object1.id }}</h5>
                             </div>
                             <p class="card-text">
                                 <div class="row">
-                                    <p>Имя владельца квртиры: <span class="fw-bolder">{{ object.ownerName }}</span></p>
+                                    <p>Имя владельца квртиры: <span class="fw-bolder">{{ object1.ownerName }}</span></p>
                                 </div>
                                 <div class="row">
-                                    <p>Фамилия владельца квртиры: <span class="fw-bolder">{{ object.ownerSurName }}</span></p>
+                                    <p>Фамилия владельца квртиры: <span class="fw-bolder">{{ object1.ownerSurName }}</span></p>
                                 </div>
+                                
+                                <div class="row">
+                                    <p> Вид питомца: <span class="fw-bolder">{{ object2.petKind }}</span></p>
+                                </div>
+                                
                                 <div class="row align-items-center justify-content-center">
                                     <div class="col-5">
-                                        <a href="{% url 'person-detail' object.id %}" class="btn btn-primary btn-lg" style="width: 200px;">Детальнее</a>
+                                        <a href="{% url 'person-detail' object1.id %}" class="btn btn-primary btn-lg" style="width: 200px;">Детальнее</a>
                                     </div>
                                 </div>
                             </p>

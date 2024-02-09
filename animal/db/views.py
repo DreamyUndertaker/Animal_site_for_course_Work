@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.views.generic import DetailView, UpdateView
 from django.shortcuts import redirect, render
 from .forms import ApartmentForm, ApartmentOwnerForm, EntranceForm, FamilyForm, PetsForm
@@ -8,13 +9,16 @@ def db_home(request):
     apartment = Apartment.objects.all()
     family = Family.objects.all()
     pets = Pets.objects.all()
-    apartmentOwner = ApartmentOwner.objects.all()
+    apartmentOwner = ApartmentOwner.objects.all() 
     entrance = Entrance.objects.all()
-    return render(request, 'db/db.html', {'Apartment' : apartment, 
-                                            'Family': family, 
-                                            'Pets' : pets, 
-                                            'ApartmentOwner': apartmentOwner, 
-                                            'Entrance': entrance})
+    myZip = zip(apartmentOwner, pets)
+    
+    return render(request, 'db/db.html', {'apartment' : apartment, 
+                                            'family': family, 
+                                            'pets' : pets, 
+                                            'apartmentOwner': apartmentOwner, 
+                                            'entrance': entrance,
+                                            'myZip': myZip})
 
 class PersonDetailView(DetailView):
     model = ApartmentOwner 
